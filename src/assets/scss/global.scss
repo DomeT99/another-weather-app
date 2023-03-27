@@ -1,4 +1,6 @@
 @import "./font.scss";
+@import "./layout.scss";
+@import "./bulma-override.scss";
 
 :root {
   --primary-color: #62b6cb;
@@ -12,12 +14,17 @@
   --font-light: "JosefinSans-Light";
   --font-medium: "JosefinSans-Medium";
 }
+
+html {
+  background-color: var(--secondary-color);
+}
+
 h1 {
   @include font-generate(var(--font-medium), 32px, var(--fifth-color));
 }
 h2 {
   @include font-generate(var(--font-medium), 24px, var(--seventh-color));
 }
-p{
-    @include font-generate(var(--font-light), 20px, var(--fifth-color));
+p {
+  @include font-generate(var(--font-light), 20px, var(--fifth-color));
 }
