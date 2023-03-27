@@ -1,0 +1,23 @@
+@import "./font.scss";
+
+:root {
+  --primary-color: #62b6cb;
+  --secondary-color: #bee9e8;
+  --tertiary-color: #1b4965;
+  --quaternary-color: #cae9ff;
+  --fifth-color: #000;
+  --sixth-color: #fff;
+  --seventh-color: #696969;
+
+  --font-light: "JosefinSans-Light";
+  --font-medium: "JosefinSans-Medium";
+}
+h1 {
+  @include font-generate(var(--font-medium), 32px, var(--fifth-color));
+}
+h2 {
+  @include font-generate(var(--font-medium), 24px, var(--seventh-color));
+}
+p{
+    @include font-generate(var(--font-light), 20px, var(--fifth-color));
+}

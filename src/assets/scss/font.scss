@@ -1,0 +1,14 @@
+@font-face {
+  font-family: "JosefinSans-Light";
+  src: url("../font/JosefinSans-Light.ttf") format("truetype");
+}
+@font-face {
+  font-family: "JosefinSans-Medium";
+  src: url("../font/JosefinSans-Medium.ttf") format("truetype");
+}
+
+@mixin font-generate($font-family, $size, $color) {
+  font-family: $font-family;
+  font-size: $size;
+  color: $color;
+}
