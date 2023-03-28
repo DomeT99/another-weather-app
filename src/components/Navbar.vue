@@ -3,6 +3,7 @@ import { onMounted } from "vue";
 
 onMounted(() => openMenu());
 
+
 const openMenu = () => {
   const $navbarBurgers = Array.prototype.slice.call(
     document.querySelectorAll(".navbar-burger"),
@@ -20,12 +21,10 @@ const openMenu = () => {
     });
   });
 };
-
 const closeMenu = () => {
   document.querySelector(".navbar-burger").classList.toggle("is-active");
   document.getElementById("navbar-id").classList.toggle("is-active");
 };
-
 const changeRoute = (path) => {
   router.push(path);
   closeMenu();
@@ -51,14 +50,17 @@ const changeRoute = (path) => {
       <div class="navbar-start">
         <div class="navbar-item">
           <button class="button is-primary b-sixth w-100">
-            <strong>Search</strong>
+            <strong>SEARCH</strong>
           </button>
         </div>
         <div class="navbar-item">
           <button class="button is-primary b-sixth w-100">
-            <strong>Air Pollution</strong>
+            <strong>AIR POLLUTION</strong>
           </button>
         </div>
+      </div>
+      <div class="navbar-end">
+
       </div>
     </div>
   </nav>
