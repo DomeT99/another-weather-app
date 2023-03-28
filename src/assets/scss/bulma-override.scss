@@ -7,9 +7,13 @@
 }
 .is-tertiary {
   background-color: var(--tertiary-color) !important;
-}
-.is-white-color {
-  color: var(--sixth-color);
+  color: var(--sixth-color) !important;
+  &.is-tertiary:focus {
+    box-shadow: none;
+  }
+  &.is-tertiary:active {
+    box-shadow: none;
+  }
 }
 
 //Border
@@ -24,6 +28,17 @@
 }
 
 //Columns
-.columns{
+.columns {
   margin: 0;
+}
+
+//Input
+.input {
+  &.input:focus {
+    border-color: var(--seventh-color);
+    box-shadow: 0 0 0.075em var(--seventh-color);
+  }
+  &.input:hover {
+    border-color: var(--seventh-color);
+  } 
 }

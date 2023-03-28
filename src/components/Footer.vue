@@ -17,7 +17,7 @@ const openLinkTree = () => {
         height="48"
       />
 
-      <hr class="opacity-0" />
+      <hr />
       <p @click="openLinkTree" class="bold pointer">
         © Domenico Tenace {{ dateNow }}
       </p>
@@ -29,9 +29,6 @@ const openLinkTree = () => {
   font-weight: bold;
 }
 
-.opacity-0 {
-  opacity: 0;
-}
 .pointer {
   cursor: pointer;
 }

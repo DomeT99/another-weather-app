@@ -1,11 +1,11 @@
 <script setup>
 const props = defineProps({
-  buttonFn: Function
+  buttonFn: Function,
 });
 </script>
 
 <template>
-  <button @click="props.buttonFn" class="button">
+  <button @keyup="props.buttonFn" @click="props.buttonFn" class="button">
     <slot></slot>
   </button>
 </template>

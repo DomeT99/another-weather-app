@@ -4,15 +4,12 @@ import Input from "../Input.vue";
 </script>
 
 <template>
-  <div class="has-text-centered mt-6">
-    <h1>Search your city</h1>
-  </div>
-  <div class="columns">
+  <div class="columns mt-12">
     <div class="column is-10">
-      <Input :type="'text'" :place-holder="'Ex: Berlin, Dublin...'" />
+      <Input :type="'text'" :place-holder="'Search your city'" />
     </div>
     <div class="column is-2">
-      <Button class="is-tertiary is-white-color b-sixth w-100 is-large"
+      <Button class="is-tertiary b-sixth w-100 is-large"
         >Search</Button
       >
     </div>
