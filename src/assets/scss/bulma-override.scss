@@ -8,14 +8,22 @@
 .is-tertiary {
   background-color: var(--tertiary-color) !important;
 }
+.is-white-color {
+  color: var(--sixth-color);
+}
 
 //Border
-.b-sixth{
-    border-color: var(--seventh-color) !important;
+.b-sixth {
+  border-color: var(--seventh-color) !important;
 }
 
 //Footer
 .footer {
   background-color: var(--sixth-color);
   padding: 0.9rem 0.1rem 1rem;
+}
+
+//Columns
+.columns{
+  margin: 0;
 }

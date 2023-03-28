@@ -1,3 +1,7 @@
-<script setup></script>
+<script setup>
+import SearchSection from "../components/SearchView/SearchSection.vue";
+</script>
 
-<template></template>
+<template>
+  <SearchSection></SearchSection>
+</template>
