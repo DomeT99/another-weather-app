@@ -6,6 +6,11 @@ const routes = [
     name: "search",
     component: () => import("../views/Search.vue"),
   },
+  {
+    path: "/airpollution",
+    name: "air-pollution",
+    component: () => import("../views/AirPollution.vue"),
+  },
 ];
 
 const router = createRouter({
