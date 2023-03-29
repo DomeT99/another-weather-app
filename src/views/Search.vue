@@ -1,10 +1,10 @@
 <script setup>
 import SearchSection from "../components/SearchView/SearchSection.vue";
-import ResultSection from "../components/SearchView/ResultSection.vue";
+import ResultSection from "../components/Result.vue";
 </script>
 
 <template>
   <SearchSection></SearchSection>
   <hr />
-  <ResultSection></ResultSection>
+  <ResultSection v-if="false"></ResultSection>
 </template>
