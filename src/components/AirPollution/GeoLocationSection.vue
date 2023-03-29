@@ -1,6 +1,7 @@
 <script setup>
 import Button from "../Button.vue";
 </script>
+
 <template>
   <div class="columns mt-12">
     <div class="column is-12 has-text-centered">

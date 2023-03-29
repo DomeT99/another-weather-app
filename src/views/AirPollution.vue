@@ -6,6 +6,7 @@ import ResultSection from "../components/Result.vue";
 //O3 = Ozono
 //SO2 = Biossido di zolfo
 </script>
+
 <template>
   <GeoLocation></GeoLocation>
   <hr />

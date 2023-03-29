@@ -1,35 +1,27 @@
-<script setup></script>
+<script setup>
+const props = defineProps({
+  city: String,
+  dataFetch: {
+    type: Array,
+  },
+});
+</script>
 <template>
   <section class="section">
-    <div class="column has-text-centered">
-      <h1>Alaska</h1>
-    </div>
+    <header class="column has-text-centered">
+      <h1>{{ props.city ?? "" }}</h1>
+    </header>
     <hr class="bg-white" />
-    <div class="columns">
-      <div class="column has-text-centered-mobile">
-        <h2>Temperature</h2>
+    <div v-for="data in props.dataFetch">
+      <div class="columns">
+        <div class="column has-text-centered-mobile">
+          <h2>{{ data.name }}</h2>
+        </div>
+        <div class="column has-text-centered-mobile">
+          <p>{{ data.value }}</p>
+        </div>
       </div>
-      <div class="column has-text-centered-mobile">
-        <p>0</p>
-      </div>
-    </div>
-    <hr class="bg-white" />
-    <div class="columns">
-      <div class="column has-text-centered-mobile">
-        <h2>Pressure</h2>
-      </div>
-      <div class="column has-text-centered-mobile">
-        <p>0</p>
-      </div>
-    </div>
-    <hr class="bg-white" />
-    <div class="columns">
-      <div class="column has-text-centered-mobile">
-        <h2>Humidity</h2>
-      </div>
-      <div class="column has-text-centered-mobile">
-        <p>0</p>
-      </div>
+      <hr class="bg-white" />
     </div>
   </section>
 </template>
