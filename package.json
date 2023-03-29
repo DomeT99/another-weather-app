@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "bulma": "^0.9.4",
+    "pinia": "^2.0.33",
     "sass": "^1.60.0",
     "vue": "^3.2.47",
     "vue-router": "4"
