@@ -1,5 +1,6 @@
 import { defineStore } from "pinia";
 import { reactive, watch } from "vue";
+import { useFetch } from "../composable/useFetch";
 
 export const useAirPollutionStore = defineStore("air-pollution", () => {
   const coordinates = reactive({
@@ -7,10 +8,8 @@ export const useAirPollutionStore = defineStore("air-pollution", () => {
     longitude: 0,
   });
 
-
   watch(coordinates, () => getAirPollution());
 
-  
   function enableGeolocation() {
     if (navigator.onLine) {
       navigator.geolocation.getCurrentPosition((position) => {
@@ -20,8 +19,17 @@ export const useAirPollutionStore = defineStore("air-pollution", () => {
     }
   }
   async function getAirPollution() {
+    //TODO
+    const parameters = {
+      url: `${import.meta.env.VITE_URL_AIRPOLLUTION}?lat=${
+        coordinates.latitude
+      }&lon=${coordinates.longitude}`,
+      key: import.meta.env.VITE_KEY_AIRPOLLUTION,
+      host: import.meta.env.VITE_HOST_AIRPOLLUTION,
+    };
+
     try {
-     //TODO
+      const response = await useFetch(parameters);
     } catch (e) {
       throw e;
     }

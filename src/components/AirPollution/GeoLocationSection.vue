@@ -1,5 +1,8 @@
 <script setup>
 import Button from "../Button.vue";
+import { useAirPollutionStore } from "../../store/airPollutionStore";
+
+const store = useAirPollutionStore();
 </script>
 
 <template>
@@ -10,7 +13,7 @@ import Button from "../Button.vue";
   </div>
   <div class="columns mt-4">
     <div class="column is-2 is-4-mobile is-offset-5 is-offset-4-mobile">
-      <Button class="is-tertiary b-sixth w-100 is-large">Active</Button>
+      <Button :button-fn="store.enableGeolocation" class="is-tertiary b-sixth w-100 is-large">Active</Button>
     </div>
   </div>
 </template>
