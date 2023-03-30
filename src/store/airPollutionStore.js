@@ -8,8 +8,6 @@ export const useAirPollutionStore = defineStore("air-pollution", () => {
     longitude: 0,
   });
 
-  watch(coordinates, () => getAirPollution());
-
   function enableGeolocation() {
     if (navigator.onLine) {
       navigator.geolocation.getCurrentPosition((position) => {
@@ -17,6 +15,7 @@ export const useAirPollutionStore = defineStore("air-pollution", () => {
         coordinates.longitude = position.coords.longitude;
       });
     }
+    //TODO ELSE
   }
   async function getAirPollution() {
     //TODO
@@ -34,6 +33,8 @@ export const useAirPollutionStore = defineStore("air-pollution", () => {
       throw e;
     }
   }
+
+  watch(coordinates, () => getAirPollution());
 
   return { enableGeolocation };
 });

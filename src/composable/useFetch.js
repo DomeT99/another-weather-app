@@ -11,6 +11,6 @@ export const useFetch = async (parameters) => {
     .then((data) => data)
     .then((response) => response.json())
     .catch((err) => console.error(err));
-
+  //TODO ERROR HANDLING
   return response;
 };
