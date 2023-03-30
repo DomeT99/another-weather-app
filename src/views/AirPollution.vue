@@ -1,14 +1,13 @@
 <script setup>
 import GeoLocation from "../components/AirPollution/GeoLocationSection.vue";
 import ResultSection from "../components/Result.vue";
-//CO = Monossido di carbonio
-//NO2 = Biossido di azoto
-//O3 = Ozono
-//SO2 = Biossido di zolfo
+import { useAirPollutionStore } from "../store/airPollutionStore";
+
+const store = useAirPollutionStore();
 </script>
 
 <template>
   <GeoLocation></GeoLocation>
   <hr />
-  <ResultSection v-if="false"></ResultSection>
+  <ResultSection :data-fetch="store.qualityData" v-if="true"></ResultSection>
 </template>

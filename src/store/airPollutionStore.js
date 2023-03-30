@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import { reactive, watch } from "vue";
+import { reactive, ref, watch } from "vue";
 import { useFetch } from "../composable/useFetch";
 
 export const useAirPollutionStore = defineStore("air-pollution", () => {
@@ -7,18 +7,9 @@ export const useAirPollutionStore = defineStore("air-pollution", () => {
     latitude: 0,
     longitude: 0,
   });
+  const qualityData = ref([]);
 
-  function enableGeolocation() {
-    if (navigator.onLine) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        coordinates.latitude = position.coords.latitude;
-        coordinates.longitude = position.coords.longitude;
-      });
-    }
-    //TODO ELSE
-  }
   async function getAirPollution() {
-    //TODO
     const parameters = {
       url: `${import.meta.env.VITE_URL_AIRPOLLUTION}?lat=${
         coordinates.latitude
@@ -29,12 +20,33 @@ export const useAirPollutionStore = defineStore("air-pollution", () => {
 
     try {
       const response = await useFetch(parameters);
+
+      insertQualityData(response);
     } catch (e) {
       throw e;
     }
   }
+  function insertQualityData(response) {
+    Object.keys(response).forEach((element) => {
+      const data = {
+        name: element.toString(),
+        value: response[element].concentration,
+      };
+
+      qualityData.value.push(data);
+    });
+  }
+  function enableGeolocation() {
+    if (navigator.onLine) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        coordinates.latitude = position.coords.latitude;
+        coordinates.longitude = position.coords.longitude;
+      });
+    }
+    //TODO ELSE
+  }
 
   watch(coordinates, () => getAirPollution());
 
-  return { enableGeolocation };
+  return { enableGeolocation, qualityData };
 });
