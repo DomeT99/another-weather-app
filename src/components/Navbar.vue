@@ -7,12 +7,12 @@ onMounted(() => openMenu());
 
 const buttonsNavbar = [
   {
-    text: "AIR POLLUTION",
-    path: "/",
-  },
-  {
     text: "SEARCH",
     path: "/search",
+  },
+  {
+    text: "AIR POLLUTION",
+    path: "/airpollution",
   },
 ];
 const isMenuActive = ref(false);
