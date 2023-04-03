@@ -9,5 +9,8 @@ const store = useAirPollutionStore();
 <template>
   <GeoLocation></GeoLocation>
   <hr />
-  <ResultSection :data-fetch="store.qualityData" v-if="true"></ResultSection>
+  <ResultSection
+    :data-fetch="store.qualityData"
+    v-if="store.qualityData.length > 0"
+  ></ResultSection>
 </template>
