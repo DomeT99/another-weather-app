@@ -5,3 +5,11 @@ export function isObject(object) {
     return false;
   }
 }
+
+export function isOnline() {
+  if (navigator.onLine) {
+    return true;
+  } else {
+    return false;
+  }
+}

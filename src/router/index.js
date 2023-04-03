@@ -12,9 +12,14 @@ const routes = [
     component: () => import("../views/AirPollution.vue"),
   },
   {
+    path: "/offline",
+    name: "offline",
+    component: () => import("../views/Errors/Offline.vue"),
+  },
+  {
     path: "/:pathMatch(.*)*",
     name: "404",
-    component: () => import("../views/404.vue"),
+    component: () => import("../views/Errors/404.vue"),
   },
 ];
 

@@ -27,9 +27,7 @@ export function insertQualityData(object) {
 
   const store = useAirPollutionStore();
 
-  dataArray.forEach((data) => {
-    store.qualityData.push(data);
-  });
+  dataArray.forEach((data) => store.qualityData.push(data));
 }
 
 export function createQualityArray(object) {
