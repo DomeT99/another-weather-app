@@ -22,7 +22,7 @@ export async function getAirPollution() {
   }
 }
 
-function insertQualityData(object) {
+export function insertQualityData(object) {
   const dataArray = createQualityArray(object);
 
   const store = useAirPollutionStore();
@@ -32,7 +32,7 @@ function insertQualityData(object) {
   });
 }
 
-function createQualityArray(object) {
+export function createQualityArray(object) {
   const dataArray = [];
 
   Object.keys(object).forEach((key) => {
