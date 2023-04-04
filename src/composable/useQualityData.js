@@ -1,5 +1,6 @@
 import { useAirPollutionStore } from "../store/airPollutionStore";
 import { useFetch } from "./useFetch";
+import { useDefineError } from "./useDefineError";
 import { isObject } from "../utils/check";
 
 export async function getAirPollution() {
@@ -17,8 +18,8 @@ export async function getAirPollution() {
     const response = await useFetch(parameters);
 
     insertQualityData(response);
-  } catch (e) {
-    throw e;
+  } catch (error) {
+    useDefineError(error);
   }
 }
 
