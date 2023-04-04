@@ -17,6 +17,11 @@ const routes = [
     component: () => import("../views/Errors/Offline.vue"),
   },
   {
+    path: "/",
+    redirect: "/search",
+    component: () => import("../views/Search.vue"),
+  },
+  {
     path: "/:pathMatch(.*)*",
     name: "404",
     component: () => import("../views/Errors/404.vue"),

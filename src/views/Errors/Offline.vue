@@ -1,8 +1,8 @@
 <script setup>
-import { useOnline } from "../../composable/useOffline";
+import { useOffline } from "../../composable/useOffline";
 import Box from "../../components/Errors/Box.vue";
 
-useOnline();
+useOffline();
 </script>
 <template>
   <Box>
