@@ -1,7 +1,8 @@
 import { defineStore } from "pinia";
 import { reactive, ref, watch } from "vue";
 import { getAirPollution } from "../composable/useQualityData";
-import { isOnline } from "../utils/check";
+import { isOffline } from "../utils/check";
+import router from "../router/index";
 
 export const useAirPollutionStore = defineStore("air-pollution", () => {
   const coordinates = reactive({
@@ -11,13 +12,16 @@ export const useAirPollutionStore = defineStore("air-pollution", () => {
   const qualityData = ref([]);
 
   function enableGeolocation() {
-    if (isOnline()) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        coordinates.latitude = position.coords.latitude;
-        coordinates.longitude = position.coords.longitude;
-      });
+   
+    if (isOffline()) {
+      router.push("/offline");
+      return;
     }
-    //TODO ELSE
+    
+    navigator.geolocation.getCurrentPosition((position) => {
+      coordinates.latitude = position.coords.latitude;
+      coordinates.longitude = position.coords.longitude;
+    });
   }
 
   watch(coordinates, () => getAirPollution());

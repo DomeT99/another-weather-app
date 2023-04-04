@@ -35,14 +35,17 @@ export function createQualityArray(object) {
   const dataArray = [];
 
   Object.keys(object).forEach((key) => {
-    if (isObject(object[key])) {
-      const data = {
-        name: key.toString(),
-        value: object[key].concentration,
-      };
-
-      dataArray.push(data);
+    
+    if (!isObject(object[key])) {
+      return;
     }
+    
+    const data = {
+      name: key.toString(),
+      value: object[key].concentration,
+    };
+
+    dataArray.push(data);
   });
 
   return dataArray;
