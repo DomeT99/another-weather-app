@@ -1,6 +1,5 @@
 import { useAirPollutionStore } from "../store/airPollutionStore";
 import { useFetch } from "./useFetch";
-import { useDefineError } from "./useDefineError";
 import { isObject } from "../utils/check";
 
 export async function getAirPollution() {
@@ -14,39 +13,25 @@ export async function getAirPollution() {
     host: import.meta.env.VITE_HOST_AIRPOLLUTION,
   };
 
-  try {
-    const response = await useFetch(parameters);
+  const response = await useFetch(parameters);
 
-    insertQualityData(response);
-  } catch (error) {
-    useDefineError(error);
-  }
+  insertQualityData(response);
 }
 
 export function insertQualityData(object) {
-  const dataArray = createQualityArray(object);
-
   const store = useAirPollutionStore();
-
-  dataArray.forEach((data) => store.qualityData.push(data));
-}
-
-export function createQualityArray(object) {
-  const dataArray = [];
-
+ 
   Object.keys(object).forEach((key) => {
-    
     if (!isObject(object[key])) {
       return;
     }
-    
+
     const data = {
       name: key.toString(),
       value: object[key].concentration,
     };
 
-    dataArray.push(data);
+    store.qualityData.push(data);
   });
-
-  return dataArray;
 }
+

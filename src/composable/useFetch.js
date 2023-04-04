@@ -1,3 +1,5 @@
+import { useDefineError } from "./useDefineError";
+
 export const useFetch = async (parameters) => {
   const options = {
     method: "GET",
@@ -6,11 +8,13 @@ export const useFetch = async (parameters) => {
       "X-RapidAPI-Host": parameters.host,
     },
   };
+  
+  const response = await fetch(parameters.url, options);
 
-  const response = await fetch(parameters.url, options)
-    .then((data) => data)
-    .then((response) => response.json())
-    .catch((err) => console.error(err));
-  //TODO ERROR HANDLING
-  return response;
+  if (!response.ok) {
+    useDefineError(err);
+    return;
+  }
+
+  return response.json();
 };
