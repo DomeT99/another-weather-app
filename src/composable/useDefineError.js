@@ -1,6 +1,8 @@
 import router from "../router/index";
 
-export function useDefineError(error) {
-    router.push("/error")
-    throw error;
+function useDefineError(error) {
+  router.push("/error");
+  throw error;
 }
+
+export { useDefineError };

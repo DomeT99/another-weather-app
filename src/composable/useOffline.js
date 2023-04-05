@@ -2,7 +2,7 @@ import { onMounted } from "vue";
 import { isOffline } from "../utils/check";
 import router from "../router/index";
 
-export function useOffline() {
+function useOffline() {
   onMounted(() => {
     if (isOffline()) {
       router.push("/offline");
@@ -11,3 +11,5 @@ export function useOffline() {
     }
   });
 }
+
+export { useOffline };

@@ -1,26 +1,26 @@
-import { useAirPollutionStore } from "../store/airPollutionStore";
 import { useFetch } from "./useFetch";
 import { isObject } from "../utils/check";
+import { useAirPollutionStore } from "../store/airPollutionStore";
 
-export async function getAirPollution() {
+async function getAirPollution() {
   const store = useAirPollutionStore();
 
   const parameters = {
-    url: `${import.meta.env.VITE_URL_AIRPOLLUTION}?lat=${
-      store.coordinates.latitude
-    }&lon=${store.coordinates.longitude}`,
+    url:
+      import.meta.env.VITE_URL_AIRPOLLUTION +
+      "?lat=" +
+      store.coordinates.latitude +
+      "&lon=" +
+      store.coordinates.longitude,
     key: import.meta.env.VITE_KEY_AIRPOLLUTION,
     host: import.meta.env.VITE_HOST_AIRPOLLUTION,
   };
-
   const response = await useFetch(parameters);
 
-  insertQualityData(response);
+  insertQualityData(response, store.qualityData);
 }
 
-export function insertQualityData(object) {
-  const store = useAirPollutionStore();
- 
+function insertQualityData(object, qualityData) {
   Object.keys(object).forEach((key) => {
     if (!isObject(object[key])) {
       return;
@@ -31,7 +31,8 @@ export function insertQualityData(object) {
       value: object[key].concentration,
     };
 
-    store.qualityData.push(data);
+    qualityData.push(data);
   });
 }
 
+export { getAirPollution, insertQualityData };

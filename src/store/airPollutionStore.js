@@ -1,5 +1,5 @@
-import { defineStore } from "pinia";
 import { reactive, ref, watch } from "vue";
+import { defineStore } from "pinia";
 import { getAirPollution } from "../composable/useQualityData";
 import { isOffline } from "../utils/check";
 import router from "../router/index";

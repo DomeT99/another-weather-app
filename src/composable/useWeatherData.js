@@ -1,7 +1,7 @@
 import { useFetch } from "./useFetch";
 import { useWeatherStore } from "../store/weatherStore";
 
-export async function getWeatherData() {
+async function getWeatherData() {
   const store = useWeatherStore();
 
   const parameters = {
@@ -11,15 +11,18 @@ export async function getWeatherData() {
   };
 
   const response = await useFetch(parameters);
-  //insertWeatherData(response);
+  insertWeatherData(response);
 }
 
-export function insertWeatherData(object) {
+function insertWeatherData(object) {
   const store = useWeatherStore();
   const weatherData = object.main;
 
-
   Object.keys(weatherData).forEach((key) => {
+    if (!isTrueKey(key)) {
+      return;
+    }
+
     const data = {
       name: composeName(key.toString()),
       value: weatherData[key],
@@ -30,7 +33,7 @@ export function insertWeatherData(object) {
   store.weatherData.city = object.name;
 }
 
-export function composeName(key) {
+function composeName(key) {
   switch (key) {
     case "temp":
       return "Temperature";
@@ -42,3 +45,9 @@ export function composeName(key) {
       return "Pressure";
   }
 }
+
+function isTrueKey(key) {
+  return key === "temp" || key === "humidity" || key === "pressure";
+}
+
+export { getWeatherData, insertWeatherData, composeName };
