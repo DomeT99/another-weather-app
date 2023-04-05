@@ -8,7 +8,7 @@ export async function useFetch(parameters) {
       "X-RapidAPI-Host": parameters.host,
     },
   };
-  debugger;
+  
   const response = await fetch(parameters.url, options);
 
   if (!response.ok) {

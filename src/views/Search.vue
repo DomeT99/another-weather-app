@@ -10,7 +10,8 @@ const store = useWeatherStore();
   <SearchSection></SearchSection>
   <hr />
   <ResultSection
-    :data-fetch="store.weatherData"
-    v-if="store.weatherData.length > 0"
+    :city="store.weatherData.city"
+    :data-fetch="store.weatherData.dataFetch"
+    v-if="store.weatherData.dataFetch.length > 0"
   ></ResultSection>
 </template>
