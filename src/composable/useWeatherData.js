@@ -11,23 +11,23 @@ export async function getWeatherData() {
   };
 
   const response = await useFetch(parameters);
-
   //insertWeatherData(response);
-  console.log(response);
 }
 
 export function insertWeatherData(object) {
   const store = useWeatherStore();
+  const weatherData = object.main;
 
-  Object.keys(object).forEach((key) => {
+
+  Object.keys(weatherData).forEach((key) => {
     const data = {
       name: composeName(key.toString()),
-      value: key,
+      value: weatherData[key],
     };
-
-    store.weatherData.city = key.name;
     store.weatherData.dataFetch.push(data);
   });
+
+  store.weatherData.city = object.name;
 }
 
 export function composeName(key) {
@@ -40,6 +40,5 @@ export function composeName(key) {
 
     case "pressure":
       return "Pressure";
-  } 
+  }
 }
- 
