@@ -1,11 +1,17 @@
-export function isObject(object) {
+function isObject(object) {
   if (typeof object === "object") {
     return true;
-  } 
+  }
 }
 
-export function isOffline() {
+function isOffline() {
   if (!navigator.onLine) {
     return;
   }
 }
+
+function isEmpty(text) {
+  return text === "";
+}
+
+export { isObject, isOffline, isEmpty };

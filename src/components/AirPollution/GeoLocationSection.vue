@@ -13,7 +13,7 @@ const store = useAirPollutionStore();
   </div>
   <div class="columns mt-4">
     <div class="column is-2 is-4-mobile is-offset-5 is-offset-4-mobile">
-      <Button :button-fn="store.getPosition" class="is-tertiary b-sixth w-100 is-large">Check Quality</Button>
+      <Button :button-fn="store.getPosition" class="is-tertiary b-sixth w-100 is-large">Check</Button>
     </div>
   </div>
 </template>

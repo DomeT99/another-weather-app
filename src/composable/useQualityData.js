@@ -3,6 +3,7 @@ import { isObject } from "../utils/check";
 import { useAirPollutionStore } from "../store/airPollutionStore";
 
 async function processAirPollution() {
+  
   const store = useAirPollutionStore();
 
   const response = await getAirPollution();
