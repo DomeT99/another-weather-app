@@ -2,6 +2,14 @@ import { useFetch } from "./useFetch";
 import { isObject } from "../utils/check";
 import { useAirPollutionStore } from "../store/airPollutionStore";
 
+async function processAirPollution() {
+  const store = useAirPollutionStore();
+
+  const response = await getAirPollution();
+
+  insertQualityData(response, store.qualityData);
+}
+
 async function getAirPollution() {
   const store = useAirPollutionStore();
 
@@ -17,7 +25,7 @@ async function getAirPollution() {
   };
   const response = await useFetch(parameters);
 
-  insertQualityData(response, store.qualityData);
+  return response;
 }
 
 function insertQualityData(object, qualityData) {
@@ -35,4 +43,4 @@ function insertQualityData(object, qualityData) {
   });
 }
 
-export { getAirPollution, insertQualityData };
+export { processAirPollution, insertQualityData };

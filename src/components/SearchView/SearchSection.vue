@@ -2,7 +2,7 @@
 import Button from "../Button.vue";
 import Input from "../Input.vue";
 import { useWeatherStore } from "../../store/weatherStore";
-import { getWeatherData } from "../../composable/useWeatherData";
+import { processWeatherData } from "../../composable/useWeatherData";
 
 const store = useWeatherStore();
 </script>
@@ -18,7 +18,7 @@ const store = useWeatherStore();
       />
     </div>
     <div class="column is-2">
-      <Button :button-fn="getWeatherData" class="is-tertiary b-sixth w-100 is-large">Search</Button>
+      <Button :button-fn="processWeatherData" class="is-tertiary b-sixth w-100 is-large">Search</Button>
     </div>
   </div>
 </template>

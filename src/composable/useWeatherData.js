@@ -1,6 +1,25 @@
 import { useFetch } from "./useFetch";
 import { useWeatherStore } from "../store/weatherStore";
 
+async function processWeatherData() {
+  clearWeatherData();
+
+  const response = await getWeatherData();
+
+  insertWeatherData(response);
+}
+
+function clearWeatherData() {
+  const store = useWeatherStore();
+
+  const blankObj = {
+    city: "",
+    dataFetch: [],
+  };
+
+  store.weatherData = Object.assign({}, blankObj);
+}
+
 async function getWeatherData() {
   const store = useWeatherStore();
 
@@ -11,7 +30,8 @@ async function getWeatherData() {
   };
 
   const response = await useFetch(parameters);
-  insertWeatherData(response);
+
+  return response;
 }
 
 function insertWeatherData(object) {
@@ -50,4 +70,4 @@ function isTrueKey(key) {
   return key === "temp" || key === "humidity" || key === "pressure";
 }
 
-export { getWeatherData, insertWeatherData, composeName };
+export { processWeatherData, insertWeatherData, composeName };

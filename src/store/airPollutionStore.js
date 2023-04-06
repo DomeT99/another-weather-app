@@ -1,6 +1,6 @@
 import { reactive, ref, watch } from "vue";
 import { defineStore } from "pinia";
-import { getAirPollution } from "../composable/useQualityData";
+import { processAirPollution } from "../composable/useQualityData";
 import { isOffline } from "../utils/check";
 import router from "../router/index";
 
@@ -11,7 +11,7 @@ export const useAirPollutionStore = defineStore("air-pollution", () => {
   });
   const qualityData = ref([]);
 
-  function enableGeolocation() {
+  function getPosition() {
    
     if (isOffline()) {
       router.push("/offline");
@@ -24,7 +24,7 @@ export const useAirPollutionStore = defineStore("air-pollution", () => {
     });
   }
 
-  watch(coordinates, () => getAirPollution());
+  watch(coordinates, () => processAirPollution());
 
-  return { enableGeolocation, qualityData, coordinates };
+  return { getPosition, qualityData, coordinates };
 });
