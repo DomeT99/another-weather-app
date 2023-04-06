@@ -2,6 +2,7 @@
 @import "./layout.scss";
 @import "./bulma-override.scss";
 @import "./elements.scss";
+@import "./effects.scss";
 
 :root {
   --primary-color: #62b6cb;
@@ -26,7 +27,7 @@ h1 {
 h2 {
   @include font-generate(var(--font-medium), 25px, var(--fifth-color));
 }
-h3{
+h3 {
   @include font-generate(var(--font-light), 22px, var(--seventh-color));
 }
 p,

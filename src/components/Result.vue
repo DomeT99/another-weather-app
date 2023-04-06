@@ -7,7 +7,7 @@ const props = defineProps({
 });
 </script>
 <template>
-  <section class="section">
+  <section class="section fade-in">
     <header class="column has-text-centered">
       <h1>{{ props.city ?? "" }}</h1>
     </header>
