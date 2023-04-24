@@ -1,7 +1,7 @@
 <script setup>
 import { onMounted, ref } from "vue";
 import router from "../router/index";
-import Button from "./Button.vue";
+import { EButton } from "easy-kit-component";
 
 onMounted(() => openMenu());
 
@@ -67,12 +67,12 @@ const closeMenu = () => {
     >
       <div class="navbar-start">
         <div class="navbar-item" v-for="button in buttonsNavbar">
-          <Button
-            :button-fn="() => changeRoute(button.path)"
-            class="is-primary b-sixth w-100"
+          <EButton
+            @click="changeRoute(button.path)"
+            class="button is-primary b-sixth w-100"
           >
-            <strong>{{ button.text }}</strong>
-          </Button>
+            <strong>{{ button.text }}</strong></EButton
+          >
         </div>
       </div>
       <div class="navbar-end"></div>
